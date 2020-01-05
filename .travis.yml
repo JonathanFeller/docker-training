@@ -1,0 +1,9 @@
+sudo: required
+services: 
+  - docker
+
+before_install:
+  - docker build -t jonathanfeller/docker-training -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true jonathanfeller/docker-training npm run test
